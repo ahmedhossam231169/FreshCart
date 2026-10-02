@@ -11,7 +11,6 @@ import {
   IconShieldCheck,
   IconStar,
   IconUser,
-  IconUserPlus,
 } from "@/src/components/auth/icons";
 import { zodResolver } from "@hookform/resolvers/zod";
 
@@ -22,12 +21,10 @@ import toast from "react-hot-toast";
 import { Field, FieldDescription, FieldError, FieldLabel } from "@/components/ui/field";
 import { Input } from "@base-ui/react";
 import { Spinner } from "@/components/ui/spinner";
-import { useRouter } from "next/navigation";
 import { signIn } from "next-auth/react";
 
 // This is just the UI for the login page. There is no real sign-in logic here yet.
 export default function LoginPage() {
-const router = useRouter();
   const { control , handleSubmit ,formState:{isSubmitting} } = useForm({
     resolver:zodResolver(signInSchema),
     mode: "all",
@@ -49,7 +46,10 @@ const router = useRouter();
 
       if (response?.ok) {
         toast.success("Signed in successfully!");
-        router.push("/Home");
+        // Full page load so the router cache drops pages prefetched while logged out
+        // (e.g. /cart, which was cached as a redirect to login)
+        const callbackUrl = new URLSearchParams(window.location.search).get("callbackUrl");
+        window.location.assign(callbackUrl?.startsWith("/") ? callbackUrl : "/Home");
       } else {
         toast.error("Failed to sign in. Please try again later.");
       }
