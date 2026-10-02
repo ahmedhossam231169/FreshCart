@@ -18,11 +18,11 @@ type UserMenuProps = {
 };
 
 const menuLinks = [
-  { href: "#", label: "My Profile", icon: IconUser },
-  { href: "#", label: "My Orders", icon: IconBox },
-  { href: "#", label: "My Wishlist", icon: IconHeart },
-  { href: "#", label: "Addresses", icon: IconMapPin },
-  { href: "#", label: "Settings", icon: IconSettings },
+  { href: "/profile", label: "My Profile", icon: IconUser },
+  { href: "/allorders", label: "My Orders", icon: IconBox },
+  { href: "/wishlist", label: "My Wishlist", icon: IconHeart },
+  { href: "/addresses", label: "Addresses", icon: IconMapPin },
+  { href: "/settings", label: "Settings", icon: IconSettings },
 ];
 
 export default function UserMenu({ name, email }: UserMenuProps) {

@@ -194,8 +194,8 @@ const router = useRouter();
                   <Spinner />
                 ) : (
                   <>
-                    <IconUserPlus className="h-4.5 w-4.5" />
-                    Create My Account
+                    login
+                    <IconUser className="h-5.5 w-5.5" />
                   </>
                 )}
             </button>
