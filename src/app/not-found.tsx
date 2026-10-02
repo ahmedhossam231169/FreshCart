@@ -12,7 +12,7 @@ export default function NotFound() {
 
   return (
     <AuthLayout>
-      <div className="relative flex flex-col items-center overflow-hidden bg-[#f0fdf4]/40 px-2 py-24 text-center">
+      <div className="relative flex flex-col items-center overflow-hidden bg-[#f0fdf4]/40 px-4 py-16 sm:py-24 text-center">
         <div className="pointer-events-none absolute inset-0 text-4xl opacity-20">
           <span className="absolute left-[6%] top-[14%]">🍎</span>
           <span className="absolute left-[15%] top-[55%]">🍃</span>
@@ -35,7 +35,7 @@ export default function NotFound() {
           <span className="h-1.5 w-1.5 rounded-full bg-[#16a34a]/60" />
         </div>
 
-        <h1 className="relative mt-8 text-4xl font-bold text-[#101828]">Oops! Nothing Here</h1>
+        <h1 className="relative mt-8 text-3xl sm:text-4xl font-bold text-[#101828]">Oops! Nothing Here</h1>
         <p className="relative mt-3 max-w-md text-base text-[#4a5565]">
           {`Looks like this page went out of stock! Don't worry, there's plenty more fresh content to explore.`}
         </p>

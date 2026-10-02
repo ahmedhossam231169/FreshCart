@@ -44,7 +44,7 @@ export default function ProductTabs({
 
   return (
     <div className="rounded-xl border border-[#e5e7eb] bg-white">
-      <div className="flex items-center gap-8 border-b border-[#e5e7eb] px-6">
+      <div className="flex items-center gap-5 overflow-x-auto whitespace-nowrap border-b border-[#e5e7eb] px-4 sm:gap-8 sm:px-6">
         <button suppressHydrationWarning
           type="button"
           onClick={() => setActiveTab("details")}
@@ -84,11 +84,11 @@ export default function ProductTabs({
       </div>
 
       {activeTab === "details" && (
-        <div className="p-6">
+        <div className="p-4 sm:p-6">
           <h3 className="text-base font-semibold text-[#1e2939]">About this Product</h3>
           <p className="mt-2 text-sm text-[#4a5565]">{description}</p>
 
-          <div className="mt-6 grid grid-cols-2 gap-6">
+          <div className="mt-6 grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="rounded-lg bg-[#f9fafb] p-5">
               <h4 className="text-sm font-semibold text-[#1e2939]">Product Information</h4>
               <div className="mt-3 flex flex-col gap-2 text-sm">
@@ -137,8 +137,8 @@ export default function ProductTabs({
       )}
 
       {activeTab === "reviews" && (
-        <div className="p-6">
-          <div className="flex items-start gap-10">
+        <div className="p-4 sm:p-6">
+          <div className="flex flex-col gap-6 sm:flex-row sm:items-start sm:gap-10">
             <div className="flex shrink-0 flex-col items-center gap-1">
               <span className="text-4xl font-bold text-[#1e2939]">{rating}</span>
               <span className="flex items-center gap-0.5 text-[#facc15]">
@@ -180,8 +180,8 @@ export default function ProductTabs({
       )}
 
       {activeTab === "shipping" && (
-        <div className="p-6">
-          <div className="grid grid-cols-2 gap-6">
+        <div className="p-4 sm:p-6">
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-2">
             <div className="rounded-lg bg-[#f0fdf4] p-5">
               <div className="flex items-center gap-3">
                 <span className="flex h-9 w-9 items-center justify-center rounded-full bg-[#16a34a]">

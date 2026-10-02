@@ -97,7 +97,7 @@ export default function CartClient({
     <AuthLayout>
       <div className="bg-[#f9fafb] min-h-[60vh]">
         {/* Breadcrumb */}
-        <div className="px-[120px] pt-6 text-sm text-[#4a5565]">
+        <div className="px-4 sm:px-6 lg:px-10 xl:px-[120px] pt-6 text-sm text-[#4a5565]">
           <Link href="/" className="hover:text-[#16a34a]">
             Home
           </Link>
@@ -106,12 +106,12 @@ export default function CartClient({
         </div>
 
         {/* Page title */}
-        <div className="px-[120px] pt-4">
+        <div className="px-4 sm:px-6 lg:px-10 xl:px-[120px] pt-4">
           <div className="flex items-center gap-3">
             <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#16a34a] to-[#15803d] shadow-sm">
               <IconShoppingCart className="h-6 w-6 text-white" />
             </span>
-            <h1 className="text-3xl font-bold text-[#101828]">Shopping Cart</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#101828]">Shopping Cart</h1>
           </div>
           <p className="mt-2 text-base text-[#4a5565]">
             You have{" "}
@@ -137,20 +137,20 @@ export default function CartClient({
             action="Start Shopping"
           />
         ) : (
-          <div className="flex items-start gap-6 px-[120px] py-6">
+          <div className="flex flex-col gap-6 lg:flex-row lg:items-start px-4 sm:px-6 lg:px-10 xl:px-[120px] py-6">
             {/* Left side: cart items list */}
-            <div className="flex flex-1 flex-col gap-4">
+            <div className="flex w-full min-w-0 flex-1 flex-col gap-4">
               {items.map((item) => {
                 const isBusy = loadingId === item.product._id;
                 const inStock = item.product.quantity === undefined || item.product.quantity > 0;
                 return (
                   <div
                     key={item._id}
-                    className="flex gap-5 rounded-2xl border border-[#f3f4f6] bg-white p-5 shadow-sm"
+                    className="flex flex-wrap gap-4 rounded-2xl border border-[#f3f4f6] bg-white p-4 shadow-sm sm:flex-nowrap sm:gap-5 sm:p-5"
                   >
                     {/* Image with stock badge */}
                     <div className="relative shrink-0">
-                      <div className="relative h-28 w-28 overflow-hidden rounded-xl border border-[#f3f4f6] bg-[#f9fafb]">
+                      <div className="relative h-20 w-20 sm:h-28 sm:w-28 overflow-hidden rounded-xl border border-[#f3f4f6] bg-[#f9fafb]">
                         <Image
                           src={item.product.imageCover}
                           alt={item.product.title}
@@ -169,11 +169,11 @@ export default function CartClient({
                     </div>
 
                     {/* Details */}
-                    <div className="flex-1">
-                      <h3 className="text-lg font-semibold text-[#101828]">
+                    <div className="min-w-0 flex-1">
+                      <h3 className="text-base font-semibold sm:text-lg text-[#101828]">
                         {item.product.title}
                       </h3>
-                      <div className="mt-2 flex items-center gap-2 text-xs">
+                      <div className="mt-2 flex flex-wrap items-center gap-2 text-xs">
                         {item.product.category?.name && (
                           <span className="rounded-full bg-[#f0fdf4] px-2.5 py-1 font-medium text-[#15803d]">
                             {item.product.category.name}
@@ -213,7 +213,7 @@ export default function CartClient({
                     </div>
 
                     {/* Line total + remove */}
-                    <div className="flex items-end gap-4 self-end">
+                    <div className="flex w-full items-end justify-between gap-4 sm:w-auto sm:justify-end sm:self-end">
                       <div className="text-right">
                         <span className="block text-xs text-[#99a1af]">Total</span>
                         <span className="text-xl font-bold text-[#101828]">
@@ -234,7 +234,7 @@ export default function CartClient({
                 );
               })}
 
-              <div className="mt-2 flex items-center justify-between border-t border-[#e5e7eb] pt-6">
+              <div className="mt-2 flex flex-wrap items-center justify-between gap-3 border-t border-[#e5e7eb] pt-6">
                 <Link
                   href="/products"
                   className="flex items-center gap-2 text-sm font-medium text-[#16a34a]"
@@ -254,7 +254,7 @@ export default function CartClient({
             </div>
 
             {/* Right side: order summary card */}
-            <div className="w-[380px] shrink-0 overflow-hidden rounded-2xl border border-[#e5e7eb] bg-white shadow-sm">
+            <div className="w-full shrink-0 lg:w-[380px] overflow-hidden rounded-2xl border border-[#e5e7eb] bg-white shadow-sm">
               <div className="bg-gradient-to-r from-[#16a34a] to-[#15803d] px-6 py-4">
                 <h2 className="flex items-center gap-2 text-lg font-bold text-white">
                   <IconShoppingCart className="h-5 w-5" />
@@ -349,8 +349,8 @@ export default function CartClient({
 
         {/* Clear cart confirm popup */}
         {showClearModal && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-            <div className="w-[420px] rounded-2xl bg-white p-8 text-center">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+            <div className="w-full max-w-[420px] rounded-2xl bg-white p-8 text-center">
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#fef2f2]">
                 <IconShoppingCart className="h-7 w-7 text-[#fb2c36]" />
               </div>
@@ -380,8 +380,8 @@ export default function CartClient({
 
         {/* Remove item confirm popup */}
         {selectedItem && (
-          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-            <div className="w-[420px] rounded-2xl bg-white p-8 text-center">
+          <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+            <div className="w-full max-w-[420px] rounded-2xl bg-white p-8 text-center">
               <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#fef2f2]">
                 <IconTrash className="h-7 w-7 text-[#fb2c36]" />
               </div>
@@ -427,7 +427,7 @@ function EmptyState({
   action: string;
 }) {
   return (
-    <div className="mx-[120px] my-6 flex flex-col items-center gap-3 rounded-xl border border-[#e5e7eb] bg-white py-16 text-center">
+    <div className="mx-4 sm:mx-6 lg:mx-10 xl:mx-[120px] my-6 flex flex-col items-center gap-3 rounded-xl border border-[#e5e7eb] bg-white py-16 text-center">
       <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#dcfce7]">
         <IconShoppingCart className="h-7 w-7 text-[#16a34a]" />
       </span>

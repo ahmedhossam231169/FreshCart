@@ -60,9 +60,9 @@ export default function LoginPage() {
 
   return (
     <AuthLayout>
-      <div className="mx-auto flex max-w-[1280px] items-center gap-12 px-8 py-[48px]">
+      <div className="mx-auto flex max-w-[1280px] items-center gap-12 px-4 py-8 sm:px-8 lg:py-[48px]">
         {/* Left side: marketing image + text */}
-        <div className="flex flex-1 flex-col items-center gap-6 text-center">
+        <div className="hidden flex-1 flex-col items-center gap-6 text-center lg:flex">
           <div className="relative h-[384px] w-full overflow-hidden rounded-2xl bg-white shadow-lg">
             <Image src="/login-cart.png" alt="Shopping cart full of fresh vegetables"
               fill
@@ -98,7 +98,7 @@ export default function LoginPage() {
         </div>
 
         {/* Right side: the login card */}
-        <div className="flex-1 rounded-2xl bg-white p-12 shadow-xl">
+        <div className="w-full min-w-0 flex-1 rounded-2xl bg-white p-6 shadow-xl sm:p-12">
           <div className="flex flex-col items-center gap-3 text-center">
             <Logo />
             <h1 className="text-2xl font-bold text-[#1e2939]">Welcome Back!</h1>
@@ -210,7 +210,7 @@ export default function LoginPage() {
             </p>
           </div>
 
-          <div className="mt-8 flex items-center justify-center gap-6 text-xs text-[#6a7282]">
+          <div className="mt-8 flex flex-wrap items-center justify-center gap-x-6 gap-y-2 text-xs text-[#6a7282]">
             <span className="flex items-center gap-1">
               <IconShieldCheck className="h-3 w-3.5" />
               SSL Secured

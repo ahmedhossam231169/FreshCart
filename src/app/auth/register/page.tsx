@@ -57,9 +57,9 @@ export default function RegisterPage() {
 
   return (
     <AuthLayout>
-      <div className="mx-auto flex max-w-[1280px] items-start gap-12 px-8 py-[48px]">
+      <div className="mx-auto flex max-w-[1280px] items-start gap-12 px-4 py-8 sm:px-8 lg:py-[48px]">
         {/* Left side: marketing copy, feature list and a testimonial */}
-        <div className="flex flex-1 flex-col gap-2">
+        <div className="hidden flex-1 flex-col gap-2 lg:flex">
           <h1 className="text-4xl font-bold">
             <span className="text-[#364153]">Welcome to </span>
             <span className="text-[#16a34a]">FreshCart</span>
@@ -125,8 +125,8 @@ export default function RegisterPage() {
         </div>
 
         {/* Right side: the sign up card */}
-        <div className="flex-1 rounded-2xl bg-white px-8 py-10 shadow-xl">
-          <h2 className="text-center text-3xl font-semibold text-[#364153]">Create Your Account</h2>
+        <div className="w-full min-w-0 flex-1 rounded-2xl bg-white px-5 py-8 shadow-xl sm:px-8 sm:py-10">
+          <h2 className="text-center text-2xl sm:text-3xl font-semibold text-[#364153]">Create Your Account</h2>
           <p className="mt-2 text-center text-base text-[#364153]">Start your fresh journey with us today</p>
 
           <div className="mt-8 flex items-center justify-center gap-2">

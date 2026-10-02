@@ -47,7 +47,7 @@ export default async function ProductCard({
 
   return (
     <div
-       className="ProductCard  flex h-full flex-col justify-between  border border-[#e5e7eb] bg-white p-4 shadow-sm">
+       className="ProductCard  flex h-full flex-col justify-between  border border-[#e5e7eb] bg-white p-3 shadow-sm sm:p-4">
       <div>
         <div className="relative h-44 overflow-hidden rounded-xl">
           <Image src={image} alt={name} fill className="object-contain p-2" />
@@ -99,9 +99,9 @@ export default async function ProductCard({
         </div>
       </div>
 
-      <div className="mt-2 flex items-center justify-between">
-        <div className="flex items-center gap-2">
-          <span className="text-lg font-bold text-[#1e2939]">{price} EGP</span>
+      <div className="mt-2 flex items-center justify-between gap-2">
+        <div className="flex min-w-0 flex-wrap items-baseline gap-x-2">
+          <span className="text-base font-bold sm:text-lg text-[#1e2939]">{price} EGP</span>
           {oldPrice && (
             <span className="text-sm text-[#99a1af] line-through">{oldPrice} EGP</span>
           )}

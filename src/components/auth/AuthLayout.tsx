@@ -1,4 +1,5 @@
 "use client";
+import { useState } from "react";
 import Link from "next/link";
 import { Exo } from "next/font/google";
 import Logo from "./Logo";
@@ -23,6 +24,8 @@ import {
   IconTwitter,
   IconInstagram,
   IconYoutube,
+  IconMenu,
+  IconX,
 } from "./icons";
 import { useSession } from "next-auth/react";
 import { useCounts } from "@/src/context/CountsContext";
@@ -37,27 +40,54 @@ type AuthLayoutProps = {
   children: React.ReactNode;
 };
 
+const navLinks = [
+  { href: "/", label: "Home" },
+  { href: "/products", label: "Shop" },
+  { href: "/categories", label: "Categories" },
+  { href: "/brands", label: "Brands" },
+];
+
+function SearchBox({ className = "" }: { className?: string }) {
+  return (
+    <div className={`relative ${className}`}>
+      <input suppressHydrationWarning
+        type="text"
+        placeholder="Search for products, brands and more..."
+        readOnly
+        className="w-full rounded-full border border-[#e5e7eb] bg-[#f9fafb]/50 py-3 pl-5 pr-12 text-sm text-[#364153] placeholder:text-[#364153]/50"
+      />
+      {/* TODO: wire up product search */}
+      <button suppressHydrationWarning
+        type="button"
+        className="absolute right-1.5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-[#16a34a] text-white"
+      >
+        <IconSearch className="h-3.5 w-3.5" />
+      </button>
+    </div>
+  );
+}
 
 export default function AuthLayout({ children }: AuthLayoutProps) {
   const userData = useSession();
   const { cartCount, wishlistCount } = useCounts();
+  const [menuOpen, setMenuOpen] = useState(false);
   return (
     <div className="{exo.className} ">
-      {/* Top promo bar */}
-      <div className="border-b border-[#f3f4f6] px-[120px]">
+      {/* Top promo bar (desktop only) */}
+      <div className="hidden border-b border-[#f3f4f6] px-10 lg:block xl:px-[120px]">
         <div className="flex h-10 items-center justify-between text-sm text-[#6a7282]">
           <div className="flex items-center gap-6">
             <span className="flex items-center gap-2">
               <IconTruck className="h-3 w-3.5" />
               Free Shipping on Orders 500 EGP
             </span>
-            <span className="flex items-center gap-2">
+            <span className="hidden items-center gap-2 xl:flex">
               <IconSparkles className="h-3 w-3.5" />
               New Arrivals Daily
             </span>
           </div>
           <div className="flex items-center gap-4">
-            <span className="flex items-center gap-1.5">
+            <span className="hidden items-center gap-1.5 xl:flex">
               <IconPhone className="h-3 w-3.5" />
               +1 (800) 123-4567
             </span>
@@ -80,29 +110,25 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
 
       {/* Main header */}
       <header className="sticky top-0 z-10 bg-white shadow-sm">
-        <div className="px-[120px]">
-          <div className="flex h-[72px] items-center justify-between gap-8">
-            <Link href="/" className="shrink-0">
-              <Logo />
-            </Link>
-
-            <div className="relative max-w-[672px] flex-1">
-              <input suppressHydrationWarning
-                type="text"
-                placeholder="Search for products, brands and more..."
-                readOnly
-                className="w-full rounded-full border border-[#e5e7eb] bg-[#f9fafb]/50 py-3 pl-5 pr-12 text-sm text-[#364153] placeholder:text-[#364153]/50"
-              />
-              {/* TODO: wire up product search */}
+        <div className="px-4 sm:px-6 lg:px-10 xl:px-[120px]">
+          <div className="flex h-16 items-center justify-between gap-3 lg:h-[72px] lg:gap-8">
+            <div className="flex shrink-0 items-center gap-1">
               <button suppressHydrationWarning
                 type="button"
-                className="absolute right-1.5 top-1/2 flex h-9 w-9 -translate-y-1/2 items-center justify-center rounded-full bg-[#16a34a] text-white"
+                aria-label={menuOpen ? "Close menu" : "Open menu"}
+                onClick={() => setMenuOpen((prev) => !prev)}
+                className="-ml-2 rounded-full p-2 text-[#364153] lg:hidden"
               >
-                <IconSearch className="h-3.5 w-3.5" />
+                {menuOpen ? <IconX className="h-6 w-6" /> : <IconMenu className="h-6 w-6" />}
               </button>
+              <Link href="/" className="shrink-0">
+                <Logo />
+              </Link>
             </div>
 
-            <nav className="flex items-center gap-6 text-base text-[#364153]">
+            <SearchBox className="hidden max-w-[672px] flex-1 md:block" />
+
+            <nav className="hidden items-center gap-6 text-base text-[#364153] lg:flex">
               <Link href="/">Home</Link>
               <Link href="/products">Shop</Link>
               <Link href="/categories" className="flex items-center gap-1.5">
@@ -112,8 +138,8 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
               <Link href="/brands">Brands</Link>
             </nav>
 
-            <div className="flex items-center gap-2">
-              <Link href="/support" className="flex items-center gap-2 border-r border-[#e5e7eb] pr-3">
+            <div className="flex shrink-0 items-center gap-1 sm:gap-2">
+              <Link href="/support" className="hidden items-center gap-2 border-r border-[#e5e7eb] pr-3 xl:flex">
                 <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#f0fdf4]">
                   <IconHeadset className="h-4 w-4 text-[#364153]" />
                 </span>
@@ -143,24 +169,64 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
               ) : (
                 <Link
                   href="/auth/login"
-                  className="flex items-center gap-2 rounded-full bg-[#16a34a] px-5 py-2.5 text-sm font-semibold text-white shadow-sm"
+                  aria-label="Sign In"
+                  className="flex items-center gap-2 rounded-full bg-[#16a34a] p-2.5 text-sm font-semibold text-white shadow-sm sm:px-5"
                 >
                   <IconUser className="h-3 w-3.5" />
-                  Sign In
+                  <span className="hidden sm:inline">Sign In</span>
                 </Link>
               )}
             </div>
           </div>
+
+          {/* Search on small screens */}
+          <div className="pb-3 md:hidden">
+            <SearchBox />
+          </div>
         </div>
+
+        {/* Mobile menu */}
+        {menuOpen && (
+          <nav className="border-t border-[#f3f4f6] px-4 py-3 sm:px-6 lg:hidden">
+            {navLinks.map(({ href, label }) => (
+              <Link
+                key={href}
+                href={href}
+                onClick={() => setMenuOpen(false)}
+                className="block rounded-lg px-3 py-2.5 text-base text-[#364153] hover:bg-[#f0fdf4]"
+              >
+                {label}
+              </Link>
+            ))}
+            <Link
+              href="/support"
+              onClick={() => setMenuOpen(false)}
+              className="flex items-center gap-2 rounded-lg px-3 py-2.5 text-base text-[#364153] hover:bg-[#f0fdf4]"
+            >
+              <IconHeadset className="h-4 w-4" />
+              24/7 Support
+            </Link>
+            {!userData?.data?.user && (
+              <div className="mt-2 flex gap-2 border-t border-[#f3f4f6] pt-3">
+                <Link href="/auth/login" className="flex-1 rounded-full border border-[#16a34a] py-2 text-center text-sm font-semibold text-[#16a34a]">
+                  Sign In
+                </Link>
+                <Link href="/auth/register" className="flex-1 rounded-full bg-[#16a34a] py-2 text-center text-sm font-semibold text-white">
+                  Sign Up
+                </Link>
+              </div>
+            )}
+          </nav>
+        )}
       </header>
 
       <main>{children}</main>
 
       {/* Trust badges strip */}
-      <div className="border-y border-[#dcfce7] bg-[#f0fdf4] px-[120px] py-[25px]">
-        <div className="flex items-center justify-center gap-6">
-          <div className="flex flex-1 items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#dcfce7]">
+      <div className="border-y border-[#dcfce7] bg-[#f0fdf4] px-4 py-6 sm:px-6 lg:px-10 xl:px-[120px]">
+        <div className="grid grid-cols-1 gap-6 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="flex items-center gap-3">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#dcfce7]">
               <IconTruck className="h-4.5 w-4.5 text-[#16a34a]" />
             </span>
             <div>
@@ -168,8 +234,8 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
               <p className="text-xs text-[#6a7282]">On orders over 500 EGP</p>
             </div>
           </div>
-          <div className="flex flex-1 items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#dcfce7]">
+          <div className="flex items-center gap-3">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#dcfce7]">
               <IconArrowPath className="h-4.5 w-4.5 text-[#16a34a]" />
             </span>
             <div>
@@ -177,8 +243,8 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
               <p className="text-xs text-[#6a7282]">14-day return policy</p>
             </div>
           </div>
-          <div className="flex flex-1 items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#dcfce7]">
+          <div className="flex items-center gap-3">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#dcfce7]">
               <IconShieldCheck className="h-4.5 w-4.5 text-[#16a34a]" />
             </span>
             <div>
@@ -186,8 +252,8 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
               <p className="text-xs text-[#6a7282]">100% secure checkout</p>
             </div>
           </div>
-          <div className="flex flex-1 items-center gap-3">
-            <span className="flex h-12 w-12 items-center justify-center rounded-xl bg-[#dcfce7]">
+          <div className="flex items-center gap-3">
+            <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#dcfce7]">
               <IconHeadset className="h-4.5 w-4.5 text-[#16a34a]" />
             </span>
             <div>
@@ -200,8 +266,8 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
 
       {/* Footer */}
       <footer className="bg-[#101828] pt-12">
-        <div className="mx-auto grid max-w-[1504px] grid-cols-5 gap-12 px-[120px]">
-          <div className="col-span-1">
+        <div className="mx-auto grid max-w-[1504px] grid-cols-2 gap-8 px-4 sm:px-6 md:grid-cols-3 lg:grid-cols-5 lg:gap-12 lg:px-10 xl:px-[120px]">
+          <div className="col-span-2 md:col-span-3 lg:col-span-1">
             <a href="#" className="inline-block rounded-lg bg-white px-4 py-2">
               <Logo />
             </a>
@@ -285,8 +351,8 @@ export default function AuthLayout({ children }: AuthLayoutProps) {
           </div>
         </div>
 
-        <div className="mt-12 border-t border-[#1e2939] px-[208px] py-6">
-          <div className="flex items-center justify-between">
+        <div className="mt-12 border-t border-[#1e2939] px-4 py-6 sm:px-6 lg:px-10 xl:px-[208px]">
+          <div className="flex flex-col items-center justify-between gap-4 text-center md:flex-row">
             <p className="text-sm text-[#6a7282]">© 2026 FreshCart. All rights reserved.</p>
             <div className="flex items-center gap-4 text-sm text-[#6a7282]">
               <span className="flex items-center gap-2">

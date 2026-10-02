@@ -47,7 +47,7 @@ export default function OrdersClient({
     <AuthLayout>
       <div className="min-h-[60vh] bg-[#f9fafb] pb-12">
         {/* Breadcrumb */}
-        <div className="px-[120px] pt-6 text-sm text-[#4a5565]">
+        <div className="px-4 sm:px-6 lg:px-10 xl:px-[120px] pt-6 text-sm text-[#4a5565]">
           <Link href="/" className="hover:text-[#16a34a]">
             Home
           </Link>
@@ -56,13 +56,13 @@ export default function OrdersClient({
         </div>
 
         {/* Page title */}
-        <div className="flex items-end justify-between px-[120px] pt-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between px-4 sm:px-6 lg:px-10 xl:px-[120px] pt-6">
           <div>
             <div className="flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#16a34a] to-[#15803d] shadow-sm">
                 <IconBox className="h-6 w-6 text-white" />
               </span>
-              <h1 className="text-3xl font-bold text-[#101828]">My Orders</h1>
+              <h1 className="text-2xl sm:text-3xl font-bold text-[#101828]">My Orders</h1>
             </div>
             <p className="mt-3 text-base text-[#4a5565]">
               Track and manage your{" "}
@@ -102,7 +102,7 @@ export default function OrdersClient({
             action="Start Shopping"
           />
         ) : (
-          <div className="flex flex-col gap-5 px-[120px] pt-8">
+          <div className="flex flex-col gap-5 px-4 sm:px-6 lg:px-10 xl:px-[120px] pt-8">
             {orders.map((order) => (
               <OrderCard
                 key={order._id}
@@ -139,15 +139,15 @@ function OrderCard({
         suppressHydrationWarning
         onClick={onToggle}
         aria-expanded={isOpen}
-        className="flex w-full cursor-pointer items-center gap-5 p-5 text-left hover:bg-[#f9fafb]"
+        className="flex w-full cursor-pointer items-center gap-3 p-4 sm:gap-5 sm:p-5 text-left hover:bg-[#f9fafb]"
       >
-        <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-xl bg-[#f0fdf4]">
+        <span className="hidden h-12 w-12 shrink-0 sm:flex items-center justify-center rounded-xl bg-[#f0fdf4]">
           <IconShoppingBag className="h-6 w-6 text-[#16a34a]" />
         </span>
 
-        <div className="flex-1">
+        <div className="min-w-0 flex-1">
           <div className="flex flex-wrap items-center gap-2">
-            <h3 className="text-lg font-bold text-[#101828]">Order #{order.id}</h3>
+            <h3 className="text-base font-bold sm:text-lg text-[#101828]">Order #{order.id}</h3>
             {order.isDelivered ? (
               <StatusBadge className="bg-[#dcfce7] text-[#15803d]">
                 <IconCheckCircle className="h-3.5 w-3.5" />
@@ -180,7 +180,7 @@ function OrderCard({
         </div>
 
         {/* Product thumbnails */}
-        <div className="flex -space-x-3">
+        <div className="hidden -space-x-3 md:flex">
           {order.cartItems.slice(0, 3).map((item) => (
             <div
               key={item._id}
@@ -202,9 +202,9 @@ function OrderCard({
           )}
         </div>
 
-        <div className="w-[130px] text-right">
+        <div className="shrink-0 text-right md:w-[130px]">
           <span className="block text-xs text-[#99a1af]">Total</span>
-          <span className="text-xl font-bold text-[#16a34a]">
+          <span className="text-base font-bold sm:text-xl text-[#16a34a]">
             {formatPrice(order.totalOrderPrice)}{" "}
             <span className="text-xs font-normal text-[#6a7282]">EGP</span>
           </span>
@@ -217,9 +217,9 @@ function OrderCard({
 
       {/* Details */}
       {isOpen && (
-        <div className="flex gap-6 border-t border-[#f3f4f6] bg-[#fcfcfd] p-5">
+        <div className="flex flex-col gap-6 border-t border-[#f3f4f6] bg-[#fcfcfd] p-4 sm:p-5 lg:flex-row">
           {/* Items */}
-          <ul className="flex flex-1 flex-col gap-3">
+          <ul className="flex min-w-0 flex-1 flex-col gap-3">
             {order.cartItems.map((item) => (
               <li
                 key={item._id}
@@ -256,7 +256,7 @@ function OrderCard({
           </ul>
 
           {/* Address + price summary */}
-          <div className="flex w-[340px] shrink-0 flex-col gap-4">
+          <div className="flex w-full shrink-0 lg:w-[340px] flex-col gap-4">
             {order.shippingAddress && (
               <div className="rounded-xl border border-[#f3f4f6] bg-white p-4">
                 <h4 className="flex items-center gap-2 text-sm font-semibold text-[#101828]">
@@ -330,7 +330,7 @@ function EmptyState({
   action: string;
 }) {
   return (
-    <div className="mx-[120px] my-6 flex flex-col items-center gap-3 rounded-xl border border-[#e5e7eb] bg-white py-16 text-center">
+    <div className="mx-4 sm:mx-6 lg:mx-10 xl:mx-[120px] my-6 flex flex-col items-center gap-3 rounded-xl border border-[#e5e7eb] bg-white py-16 text-center">
       <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#dcfce7]">
         <IconBox className="h-7 w-7 text-[#16a34a]" />
       </span>

@@ -12,7 +12,7 @@ export default async function TopBrands() {
   return (
     <AuthLayout>
     
-      <div className="bg-gradient-to-br from-[#9810fa] to-[#c27aff] px-[120px] py-10">
+      <div className="bg-gradient-to-br from-[#9810fa] to-[#c27aff] px-4 sm:px-6 lg:px-10 xl:px-[120px] py-10">
         <div className="pb-4 text-sm text-white/90">
           <Link href="/" className="hover:text-white">
             Home
@@ -24,20 +24,20 @@ export default async function TopBrands() {
             <IconTag className="h-7 w-7 text-white" />
           </span>
           <div>
-            <h1 className="text-3xl font-bold text-white">Top Brands</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-white">Top Brands</h1>
             <p className="text-sm text-white/90">Shop from your favorite brands</p>
           </div>
         </div>
       </div>
 
       {/* Brand grid */}
-      <div className="grid grid-cols-6 gap-6 px-[120px] py-10">
+      <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 sm:gap-6 md:grid-cols-4 lg:grid-cols-5 xl:grid-cols-6 px-4 sm:px-6 lg:px-10 xl:px-[120px] py-10">
         {topBrands.map((brand: BrandI) => (
           
           <Link
             key={brand._id}
             href={`/brands/${brand._id}`}
-            className="brandCard group flex flex-col h-[280px] items-center gap-3 rounded-xl border border-[#f3f4f6] bg-white p-4 shadow-sm transition hover:border-[#e9d4ff] hover:shadow-md"
+            className="brandCard group flex flex-col h-[220px] sm:h-[280px] items-center gap-3 rounded-xl border border-[#f3f4f6] bg-white p-4 shadow-sm transition hover:border-[#e9d4ff] hover:shadow-md"
           >
             <div className="  flex h-130 w-full items-center justify-center rounded-lg bg-[#f9fafb] p-3">
               <Image

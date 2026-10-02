@@ -20,7 +20,7 @@ export default async function BrandDetailsPage(props: PageProps<"/brands/[brandI
   return (
     <AuthLayout>
       {/* Green banner with breadcrumb and brand title */}
-      <div className="bg-gradient-to-r from-[#00c950] to-[#05df72] px-[60px] py-[60px]">
+      <div className="bg-gradient-to-r from-[#00c950] to-[#05df72] px-4 sm:px-6 lg:px-[60px] py-8 lg:py-[60px]">
         <div className="pb-4 text-sm text-white/90">
           <Link href="/" className="hover:text-white">
             Home
@@ -33,14 +33,14 @@ export default async function BrandDetailsPage(props: PageProps<"/brands/[brandI
             <Image src={brand.image} alt={brand.name} fill className="object-contain p-2.5" />
           </span>
           <div>
-            <h1 className="text-3xl font-bold text-white">{brand.name}</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-white">{brand.name}</h1>
             <p className="text-sm text-white/90">Shop {brand.name} products</p>
           </div>
         </div>
       </div>
 
       {/* Active filters row */}
-      <div className="flex items-center gap-3 px-[60px] pt-6 text-sm">
+      <div className="flex flex-wrap items-center gap-3 px-4 sm:px-6 lg:px-[60px] pt-6 text-sm">
         <span className="flex items-center gap-1.5 text-[#4a5565]">
           <IconTag className="h-4 w-4" />
           Active Filters:
@@ -57,13 +57,13 @@ export default async function BrandDetailsPage(props: PageProps<"/brands/[brandI
       </div>
 
       {/* Products count */}
-      <div className="px-[60px] pt-4">
+      <div className="px-4 sm:px-6 lg:px-[60px] pt-4">
         <p className="text-sm text-[#6a7282]">Showing {products.length} products</p>
       </div>
 
       {products.length === 0 ? (
         /* Empty state */
-        <div className="flex flex-col items-center gap-4 px-[60px] py-24 text-center">
+        <div className="flex flex-col items-center gap-4 px-4 sm:px-6 lg:px-[60px] py-24 text-center">
           <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#f3f4f6]">
             <IconBox className="h-7 w-7 text-[#99a1af]" />
           </span>
@@ -80,7 +80,7 @@ export default async function BrandDetailsPage(props: PageProps<"/brands/[brandI
         </div>
       ) : (
         /* Product grid */
-        <div className="grid grid-cols-5 gap-6 px-[120px] py-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 xl:grid-cols-5 px-4 sm:px-6 lg:px-10 xl:px-[120px] py-6">
           {products.map((product) => (
             <ProductCard
               key={product.id}

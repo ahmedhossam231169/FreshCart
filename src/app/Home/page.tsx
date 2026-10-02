@@ -35,9 +35,9 @@ export default async function Home() {
       <HeroSlider />
 
       {/* Quick info strip: shipping, payment, returns, support */}
-      <div className="bg-[#f9fafb] px-[120px] py-8">
-        <div className="flex items-stretch justify-center gap-4">
-          <div className="flex flex-1 items-center gap-4 rounded-xl bg-white p-4 shadow-sm">
+      <div className="bg-[#f9fafb] px-4 sm:px-6 lg:px-10 xl:px-[120px] py-8">
+        <div className="grid grid-cols-1 gap-4 sm:grid-cols-2 lg:grid-cols-4">
+          <div className="flex items-center gap-4 rounded-xl bg-white p-4 shadow-sm">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#fef2f2]">
               <IconTruck className="h-5 w-5 text-[#fb2c36]" />
             </span>
@@ -46,7 +46,7 @@ export default async function Home() {
               <p className="text-xs text-[#6a7282]">On orders over 500 EGP</p>
             </div>
           </div>
-          <div className="flex flex-1 items-center gap-4 rounded-xl bg-white p-4 shadow-sm">
+          <div className="flex items-center gap-4 rounded-xl bg-white p-4 shadow-sm">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#ecfdf5]">
               <IconShieldCheck className="h-5 w-5 text-[#00bc7d]" />
             </span>
@@ -55,7 +55,7 @@ export default async function Home() {
               <p className="text-xs text-[#6a7282]">100% secure transactions</p>
             </div>
           </div>
-          <div className="flex flex-1 items-center gap-4 rounded-xl bg-white p-4 shadow-sm">
+          <div className="flex items-center gap-4 rounded-xl bg-white p-4 shadow-sm">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#f3f4f6]">
               <IconArrowPath className="h-5 w-5 text-[#ff6900]" />
             </span>
@@ -64,7 +64,7 @@ export default async function Home() {
               <p className="text-xs text-[#6a7282]">14-day return policy</p>
             </div>
           </div>
-          <div className="flex flex-1 items-center gap-4 rounded-xl bg-white p-4 shadow-sm">
+          <div className="flex items-center gap-4 rounded-xl bg-white p-4 shadow-sm">
             <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-full bg-[#f9fafb]">
               <IconHeadset className="h-5 w-5 text-[#ad46ff]" />
             </span>
@@ -77,11 +77,11 @@ export default async function Home() {
       </div>
 
       {/* Shop By Category */}
-      <div className="flex flex-col gap-8 px-[120px] py-8">
-        <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-8 px-4 sm:px-6 lg:px-10 xl:px-[120px] py-8">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <span className="h-8 w-1.5 rounded-full bg-gradient-to-b from-[#00bc7d] to-[#007a55]" />
-            <h2 className="text-3xl font-bold text-[#1e2939]">
+            <h2 className="text-2xl sm:text-3xl font-bold text-[#1e2939]">
               Shop By <span className="text-[#009966]">Category</span>
             </h2>
           </div>
@@ -92,7 +92,7 @@ export default async function Home() {
           </a>
         </div>
 
-        <div className="grid grid-cols-5 gap-4">
+        <div className="grid grid-cols-2 gap-4 sm:grid-cols-3 md:grid-cols-4 lg:grid-cols-5">
           {categories.map((category: { name: string; image: string }) => (
             // TODO: link to the actual category page
             <a
@@ -117,15 +117,15 @@ export default async function Home() {
       </div>
 
       {/* Two promo banners side by side */}
-      <div className="flex gap-6 px-[120px] py-8">
-        <div className="relative flex-1 overflow-hidden rounded-2xl bg-gradient-to-br from-[#00bc7d] to-[#007a55] p-8">
+      <div className="flex flex-col gap-6 md:flex-row px-4 sm:px-6 lg:px-10 xl:px-[120px] py-8">
+        <div className="relative flex-1 overflow-hidden rounded-2xl bg-gradient-to-br from-[#00bc7d] to-[#007a55] p-6 sm:p-8">
           <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-white/10" />
           <div className="absolute -bottom-16 -left-16 h-32 w-32 rounded-full bg-white/10" />
           <div className="relative flex flex-col gap-4">
             <span className="inline-flex w-fit items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-sm text-white">
               🔥 Deal of the Day
             </span>
-            <h3 className="text-3xl font-bold text-white">Fresh Organic Fruits</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white">Fresh Organic Fruits</h3>
             <p className="text-base text-white/80">Get up to 40% off on selected organic fruits</p>
             <div className="flex items-center gap-4">
               <span className="text-3xl font-bold text-white">40% OFF</span>
@@ -144,14 +144,14 @@ export default async function Home() {
           </div>
         </div>
 
-        <div className="relative flex-1 overflow-hidden rounded-2xl bg-gradient-to-br from-[#ff8904] to-[#ff2056] p-8">
+        <div className="relative flex-1 overflow-hidden rounded-2xl bg-gradient-to-br from-[#ff8904] to-[#ff2056] p-6 sm:p-8">
           <div className="absolute -right-20 -top-20 h-40 w-40 rounded-full bg-white/10" />
           <div className="absolute -bottom-16 -left-16 h-32 w-32 rounded-full bg-white/10" />
           <div className="relative flex flex-col gap-4">
             <span className="inline-flex w-fit items-center gap-2 rounded-full bg-white/20 px-3 py-1 text-sm text-white">
               ✨ New Arrivals
             </span>
-            <h3 className="text-3xl font-bold text-white">Exotic Vegetables</h3>
+            <h3 className="text-2xl sm:text-3xl font-bold text-white">Exotic Vegetables</h3>
             <p className="text-base text-white/80">Discover our latest collection of premium vegetables</p>
             <div className="flex items-center gap-4">
               <span className="text-3xl font-bold text-white">25% OFF</span>
@@ -172,13 +172,13 @@ export default async function Home() {
       </div>
 
       {/* Featured Products */}
-      <div className="flex flex-col gap-8 px-[120px] py-8">
+      <div className="flex flex-col gap-8 px-4 sm:px-6 lg:px-10 xl:px-[120px] py-8">
         <div className="flex items-center gap-3">
           <span className="h-8 w-1.5 rounded-full bg-gradient-to-b from-[#00bc7d] to-[#007a55]" />
-          <h2 className="text-3xl font-bold text-[#1e2939]">Featured Products</h2>
+          <h2 className="text-2xl sm:text-3xl font-bold text-[#1e2939]">Featured Products</h2>
         </div>
 
-        <div className="grid grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 xl:grid-cols-5">
           {products
             
             .map(
@@ -200,8 +200,8 @@ export default async function Home() {
       </div>
 
       {/* Newsletter signup + mobile app promo */}
-      <div className="px-[120px] py-16">
-        <div className="grid grid-cols-2 gap-8 overflow-hidden rounded-3xl bg-gradient-to-br from-[#f0fdf4] to-white p-14 shadow-sm">
+      <div className="px-4 sm:px-6 lg:px-10 xl:px-[120px] py-10 lg:py-16">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-2 overflow-hidden rounded-3xl bg-gradient-to-br from-[#f0fdf4] to-white p-5 sm:p-8 lg:p-14 shadow-sm">
           {/* Left side: newsletter form */}
           <div className="flex flex-col gap-6">
             <div className="flex items-center gap-4">
@@ -215,13 +215,13 @@ export default async function Home() {
             </div>
 
             <div>
-              <h2 className="text-3xl font-bold text-[#1e2939]">Get the Freshest Updates Delivered Free</h2>
+              <h2 className="text-2xl sm:text-3xl font-bold text-[#1e2939]">Get the Freshest Updates Delivered Free</h2>
               <p className="mt-2 text-base text-[#6a7282]">
                 Weekly recipes, seasonal offers &amp; exclusive member perks.
               </p>
             </div>
 
-            <div className="flex items-center gap-6">
+            <div className="flex flex-wrap items-center gap-x-6 gap-y-2">
               <span className="flex items-center gap-2 text-sm text-[#364153]">
                 <IconCheckCircle className="h-5 w-5 text-[#16a34a]" />
                 Fresh Picks Weekly
@@ -238,15 +238,15 @@ export default async function Home() {
 
             {/* TODO: handle newsletter signup */}
             <form className="flex flex-col gap-2">
-              <div className="flex gap-3">
+              <div className="flex flex-col gap-3 sm:flex-row">
                 <input suppressHydrationWarning
                   type="email"
                   placeholder="you@example.com"
-                  className="flex-1 rounded-xl border border-[#e5e7eb] bg-white px-5 py-4 text-base text-[#364153] placeholder:text-[#364153]/50"
+                  className="min-w-0 flex-1 rounded-xl border border-[#e5e7eb] bg-white px-5 py-4 text-base text-[#364153] placeholder:text-[#364153]/50"
                 />
                 <button suppressHydrationWarning
                   type="submit"
-                  className="flex items-center gap-2 rounded-xl bg-[#16a34a] px-8 py-4 text-base font-semibold text-white"
+                  className="flex items-center justify-center gap-2 rounded-xl bg-[#16a34a] px-8 py-4 text-base font-semibold text-white"
                 >
                   Subscribe
                   <IconArrowRight className="h-4 w-4" />
@@ -257,7 +257,7 @@ export default async function Home() {
           </div>
 
           {/* Right side: mobile app promo card */}
-          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#101828] to-[#1e2939] p-8">
+          <div className="relative overflow-hidden rounded-2xl bg-gradient-to-br from-[#101828] to-[#1e2939] p-6 sm:p-8">
             <div className="absolute -right-8 -top-8 h-32 w-32 rounded-full bg-white/5" />
             <div className="absolute -bottom-8 -left-8 h-24 w-24 rounded-full bg-white/5" />
 

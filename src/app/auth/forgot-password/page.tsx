@@ -20,9 +20,9 @@ export default function ForgotPasswordPage() {
 
   return (
     <AuthLayout>
-      <div className="mx-auto flex max-w-[1280px] items-center gap-12 px-8 py-[48px]">
+      <div className="mx-auto flex max-w-[1280px] items-center gap-12 px-4 py-8 sm:px-8 lg:py-[48px]">
         {/* Left side: decorative graphic + text */}
-        <div className="flex flex-1 flex-col items-center gap-6 text-center">
+        <div className="hidden flex-1 flex-col items-center gap-6 text-center lg:flex">
           <div className="relative flex h-[384px] w-full items-center justify-center overflow-hidden rounded-2xl bg-gradient-to-br from-[#f0fdf4] via-[#f0fdf4] to-[#f3f4f6] shadow-lg">
             <div className="absolute left-8 top-8 h-24 w-24 rounded-full bg-[#dcfce7]/50" />
             <div className="absolute bottom-12 right-10 h-32 w-32 rounded-full bg-[#dcfce7]/50" />
@@ -73,7 +73,7 @@ export default function ForgotPasswordPage() {
         </div>
 
         {/* Right side: the forgot password card */}
-        <div className="flex-1 rounded-2xl bg-white p-12 shadow-xl">
+        <div className="w-full min-w-0 flex-1 rounded-2xl bg-white p-6 shadow-xl sm:p-12">
           <div className="flex flex-col items-center gap-3 text-center">
             <Logo />
             <h1 className="text-2xl font-bold text-[#1e2939]">Forgot Password?</h1>

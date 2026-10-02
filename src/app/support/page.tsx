@@ -18,7 +18,7 @@ export default function Support() {
   return (
     <AuthLayout>
       {/* Green banner with page title */}
-      <div className="bg-gradient-to-r from-[#00c950] to-[#05df72] px-[120px] py-10">
+      <div className="bg-gradient-to-r from-[#00c950] to-[#05df72] px-4 sm:px-6 lg:px-10 xl:px-[120px] py-10">
         <div className="pb-4 text-sm text-white/90">
           <Link href="/" className="hover:text-white">
             Home
@@ -30,16 +30,16 @@ export default function Support() {
             <IconHeadset className="h-7 w-7 text-white" />
           </span>
           <div>
-            <h1 className="text-3xl font-bold text-white">Contact Us</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-white">Contact Us</h1>
             <p className="text-sm text-white/90">We&apos;d love to hear from you. Get in touch with our team.</p>
           </div>
         </div>
       </div>
 
       {/* Contact info + form */}
-      <div className="flex gap-6 px-[120px] py-10">
+      <div className="flex flex-col gap-6 lg:flex-row px-4 sm:px-6 lg:px-10 xl:px-[120px] py-10">
         {/* Left column: contact info cards */}
-        <div className="flex w-[360px] shrink-0 flex-col gap-6">
+        <div className="flex w-full shrink-0 lg:w-[360px] flex-col gap-6">
           <div className="flex items-start gap-4 rounded-xl border border-[#f3f4f6] bg-white p-5 shadow-sm">
             <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#dcfce7]">
               <IconPhone className="h-5 w-5 text-[#00a63e]" />
@@ -111,8 +111,8 @@ export default function Support() {
         </div>
 
         {/* Right column: contact form */}
-        <div className="flex flex-1 flex-col gap-6">
-          <div className="rounded-2xl border border-[#f3f4f6] bg-white p-8 shadow-sm">
+        <div className="flex min-w-0 flex-1 flex-col gap-6">
+          <div className="rounded-2xl border border-[#f3f4f6] bg-white p-5 shadow-sm sm:p-8">
             <div className="flex items-center gap-4">
               <span className="flex h-11 w-11 shrink-0 items-center justify-center rounded-xl bg-[#dcfce7]">
                 <IconHeadset className="h-5 w-5 text-[#00a63e]" />
@@ -125,7 +125,7 @@ export default function Support() {
 
             {/* TODO: wire up the contact form submission */}
             <form className="mt-6 flex flex-col gap-5">
-              <div className="grid grid-cols-2 gap-4">
+              <div className="grid grid-cols-1 gap-4 sm:grid-cols-2">
                 <div className="flex flex-col gap-1.5">
                   <label className="text-sm font-medium text-[#364153]">Full Name</label>
                   <input suppressHydrationWarning

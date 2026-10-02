@@ -17,11 +17,11 @@ export default function ProductGallery({ images, alt }: ProductGalleryProps) {
   const [thumbsSwiper, setThumbsSwiper] = useState<SwiperClass | null>(null);
 
   return (
-    <div className="w-[400px] shrink-0 flex-col items-center justify-center">
+    <div className="w-full min-w-0 shrink-0 lg:w-[400px] flex-col items-center justify-center">
       <Swiper
         modules={[Thumbs]}
         thumbs={{ swiper: thumbsSwiper }}
-        className="h-[400px] w-full overflow-hidden rounded-xl border border-[#e5e7eb] bg-white"
+        className="h-[300px] w-full sm:h-[400px] overflow-hidden rounded-xl border border-[#e5e7eb] bg-white"
       >
         {images.map((image, index) => (
           <SwiperSlide key={image + index} className="relative flex h-full w-full items-center justify-center">
@@ -42,7 +42,7 @@ export default function ProductGallery({ images, alt }: ProductGalleryProps) {
           {images.map((image, index) => (
             <SwiperSlide
               key={image + index}
-              className="!h-20 !w-20 flex cursor-pointer items-center justify-center overflow-hidden rounded-lg border-2 m-auto border-[#e5e7eb] bg-white [&.swiper-slide-thumb-active]:border-[#16a34a]"
+              className="!h-16 !w-16 sm:!h-20 sm:!w-20 flex cursor-pointer items-center justify-center overflow-hidden rounded-lg border-2 m-auto border-[#e5e7eb] bg-white [&.swiper-slide-thumb-active]:border-[#16a34a]"
             >
               <Image
                 src={image}

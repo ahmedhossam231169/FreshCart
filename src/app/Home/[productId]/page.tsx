@@ -42,7 +42,7 @@ export default async function ProductDetails(props: PageProps<"/products/[produc
   return (
     <AuthLayout>
       {/* Breadcrumb */}
-      <div className="flex items-center gap-2 px-[120px] pt-6 text-sm text-[#6a7282]">
+      <div className="flex items-center gap-2 px-4 sm:px-6 lg:px-10 xl:px-[120px] pt-6 text-sm text-[#6a7282]">
         <Link href="/" className="flex items-center gap-1.5 hover:text-[#16a34a]">
           <IconHome className="h-3.5 w-3.5" />
           Home
@@ -57,12 +57,12 @@ export default async function ProductDetails(props: PageProps<"/products/[produc
         <span className="text-[#1e2939]">{product.title}</span>
       </div>
 
-      <div className="flex items-start gap-6 px-[120px] py-6">
+      <div className="flex flex-col gap-6 lg:flex-row lg:items-start px-4 sm:px-6 lg:px-10 xl:px-[120px] py-6">
         {/* Left side: image gallery */}
         <ProductGallery images={images} alt={product.title} />
 
         {/* Right side: product info */}
-        <div className="flex-1 rounded-xl border border-[#e5e7eb] bg-white p-6">
+        <div className="w-full min-w-0 flex-1 rounded-xl border border-[#e5e7eb] bg-white p-4 sm:p-6">
           <div className="flex items-center gap-2">
             <span className="rounded-full bg-[#dcfce7] px-3 py-1 text-xs font-medium text-[#16a34a]">
               {product.category?.name}
@@ -88,7 +88,7 @@ export default async function ProductDetails(props: PageProps<"/products/[produc
             </span>
           </div>
 
-          <p className="mt-3 text-3xl font-bold text-[#1e2939]">{product.price} EGP</p>
+          <p className="mt-3 text-2xl sm:text-3xl font-bold text-[#1e2939]">{product.price} EGP</p>
 
           <span className="mt-3 inline-flex items-center gap-1.5 text-sm font-medium text-[#00a63e]">
             <span className="h-2 w-2 rounded-full bg-[#00a63e]" />
@@ -165,7 +165,7 @@ export default async function ProductDetails(props: PageProps<"/products/[produc
             </button>
           </div>
 
-          <div className="mt-5 grid grid-cols-3 gap-4 border-t border-[#e5e7eb] pt-5">
+          <div className="mt-5 grid grid-cols-1 gap-3 sm:grid-cols-3 sm:gap-4 border-t border-[#e5e7eb] pt-5">
             <div className="flex items-center gap-3">
               <span className="flex h-10 w-10 items-center justify-center rounded-full bg-[#dcfce7]">
                 <IconTruck className="h-4.5 w-4.5 text-[#16a34a]" />
@@ -198,7 +198,7 @@ export default async function ProductDetails(props: PageProps<"/products/[produc
       </div>
 
       {/* Tabs */}
-      <div className="px-[120px]">
+      <div className="px-4 sm:px-6 lg:px-10 xl:px-[120px]">
         <ProductTabs
           description={product.description}
           category={product.category?.name}
@@ -211,8 +211,8 @@ export default async function ProductDetails(props: PageProps<"/products/[produc
       </div>
 
       {/* You May Also Like */}
-      <div className="flex flex-col gap-6 px-[120px] py-10">
-        <div className="flex items-center justify-between">
+      <div className="flex flex-col gap-6 px-4 sm:px-6 lg:px-10 xl:px-[120px] py-10">
+        <div className="flex flex-wrap items-center justify-between gap-3">
           <div className="flex items-center gap-3">
             <span className="h-6 w-1.5 rounded-full bg-[#16a34a]" />
             <h2 className="text-xl font-bold text-[#1e2939]">
@@ -222,7 +222,7 @@ export default async function ProductDetails(props: PageProps<"/products/[produc
 
         </div>
 
-        <div className="grid grid-cols-5 gap-6">
+        <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 xl:grid-cols-5">
           {relatedProducts
             .map(
               (product: ProductI) => (

@@ -29,7 +29,7 @@ export default function HeroSlider() {
   const [activeIndex, setActiveIndex] = useState(0);
 
   return (
-    <div className="relative h-[400px] w-full overflow-hidden">
+    <div className="relative h-[320px] sm:h-[400px] w-full overflow-hidden">
       <Swiper
         modules={[Autoplay]}
         loop
@@ -52,15 +52,15 @@ export default function HeroSlider() {
             {/* Green overlay */}
             <div className="absolute inset-0 bg-gradient-to-r from-[#00c950]/90 to-[#05df72]/50" />
 
-            <div className="relative flex h-full items-center px-[120px]">
+            <div className="relative flex h-full items-center px-14 sm:px-20 lg:px-24 xl:px-[120px]">
               <div className="flex max-w-[860px] flex-col items-start gap-4">
-                <h2 className="text-3xl font-bold leading-9 text-white">
+                <h2 className="text-2xl sm:text-3xl font-bold leading-9 text-white">
                   {slide.title[0]}
                   <br />
                   {slide.title[1]}
                 </h2>
                 <p className="text-base text-white">{slide.subtitle}</p>
-                <div className="mt-2 flex items-center gap-4">
+                <div className="mt-2 flex flex-wrap items-center gap-3 sm:gap-4">
                   <Link
                     href="/products"
                     className="rounded-lg border-2 border-white/50 bg-white px-6 py-2.5 text-base font-semibold text-[#00c950]"
@@ -101,7 +101,7 @@ export default function HeroSlider() {
         type="button"
         aria-label="Previous slide"
         onClick={() => swiper?.slidePrev()}
-        className="absolute left-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-lg"
+        className="absolute left-2 sm:left-4 top-1/2 z-10 flex h-9 w-9 sm:h-12 sm:w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-lg"
       >
         <IconArrowLeft className="h-4.5 w-4.5 text-[#1e2939]" />
       </button>
@@ -109,7 +109,7 @@ export default function HeroSlider() {
         type="button"
         aria-label="Next slide"
         onClick={() => swiper?.slideNext()}
-        className="absolute right-4 top-1/2 z-10 flex h-12 w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-lg"
+        className="absolute right-2 sm:right-4 top-1/2 z-10 flex h-9 w-9 sm:h-12 sm:w-12 -translate-y-1/2 items-center justify-center rounded-full bg-white/90 shadow-lg"
       >
         <IconArrowRight className="h-4.5 w-4.5 text-[#1e2939]" />
       </button>

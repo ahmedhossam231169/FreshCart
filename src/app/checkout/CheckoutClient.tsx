@@ -85,7 +85,7 @@ export default function CheckoutClient({
     <AuthLayout>
       <div className="min-h-[60vh] bg-[#f9fafb] pb-12">
         {/* Breadcrumb */}
-        <div className="px-[120px] pt-6 text-sm text-[#4a5565]">
+        <div className="px-4 sm:px-6 lg:px-10 xl:px-[120px] pt-6 text-sm text-[#4a5565]">
           <Link href="/" className="hover:text-[#16a34a]">
             Home
           </Link>
@@ -98,13 +98,13 @@ export default function CheckoutClient({
         </div>
 
         {/* Page title */}
-        <div className="flex items-end justify-between px-[120px] pt-6">
+        <div className="flex flex-col gap-4 sm:flex-row sm:items-end sm:justify-between px-4 sm:px-6 lg:px-10 xl:px-[120px] pt-6">
           <div>
             <div className="flex items-center gap-3">
               <span className="flex h-11 w-11 items-center justify-center rounded-xl bg-gradient-to-br from-[#16a34a] to-[#15803d] shadow-sm">
                 <IconReceipt className="h-6 w-6 text-white" />
               </span>
-              <h1 className="text-3xl font-bold text-[#101828]">Complete Your Order</h1>
+              <h1 className="text-2xl sm:text-3xl font-bold text-[#101828]">Complete Your Order</h1>
             </div>
             <p className="mt-3 text-base text-[#4a5565]">
               Review your items and complete your purchase
@@ -137,10 +137,10 @@ export default function CheckoutClient({
           <form
             onSubmit={handleSubmit(onSubmit)}
             noValidate
-            className="flex items-start gap-8 px-[120px] pt-8"
+            className="flex flex-col gap-6 lg:flex-row lg:items-start lg:gap-8 px-4 sm:px-6 lg:px-10 xl:px-[120px] pt-8"
           >
             {/* Left side: shipping + payment */}
-            <div className="flex flex-1 flex-col gap-6">
+            <div className="flex w-full min-w-0 flex-1 flex-col gap-6">
               {/* Shipping address card */}
               <section className="overflow-hidden rounded-2xl border border-[#e5e7eb] bg-white shadow-sm">
                 <CardHeader
@@ -148,7 +148,7 @@ export default function CheckoutClient({
                   title="Shipping Address"
                   subtitle="Where should we deliver your order?"
                 />
-                <div className="flex flex-col gap-5 p-6">
+                <div className="flex flex-col gap-5 p-4 sm:p-6">
                   <div className="flex items-center gap-3 rounded-xl border border-[#bedbff] bg-[#eff6ff] px-4 py-3">
                     <span className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-[#dbeafe]">
                       <IconInfo className="h-4 w-4 text-[#155dfc]" />
@@ -235,7 +235,7 @@ export default function CheckoutClient({
                   title="Payment Method"
                   subtitle="Choose how you'd like to pay"
                 />
-                <div role="radiogroup" className="flex flex-col gap-4 p-6">
+                <div role="radiogroup" className="flex flex-col gap-4 p-4 sm:p-6">
                   <PaymentOption
                     selected={paymentMethod === "cash"}
                     onSelect={() => setPaymentMethod("cash")}
@@ -273,7 +273,7 @@ export default function CheckoutClient({
             </div>
 
             {/* Right side: order summary */}
-            <aside className="sticky top-6 w-[430px] shrink-0 overflow-hidden rounded-2xl border border-[#e5e7eb] bg-white shadow-sm">
+            <aside className="w-full shrink-0 lg:sticky lg:top-24 lg:w-[430px] overflow-hidden rounded-2xl border border-[#e5e7eb] bg-white shadow-sm">
               <div className="bg-gradient-to-r from-[#16a34a] to-[#15803d] px-6 py-5">
                 <h2 className="flex items-center gap-2 text-lg font-bold text-white">
                   <IconShoppingBag className="h-5 w-5" />
@@ -351,7 +351,7 @@ export default function CheckoutClient({
                   {paymentMethod === "cash" ? "Place Order" : "Proceed to Payment"}
                 </button>
 
-                <div className="flex items-center justify-center gap-3 border-t border-[#f3f4f6] pt-4 text-xs text-[#6a7282]">
+                <div className="flex flex-wrap items-center justify-center gap-3 border-t border-[#f3f4f6] pt-4 text-xs text-[#6a7282]">
                   <span className="flex items-center gap-1.5">
                     <IconShieldCheck className="h-3.5 w-3.5 text-[#16a34a]" />
                     Secure
@@ -471,7 +471,7 @@ function PaymentOption({
       >
         {icon}
       </span>
-      <span className="flex-1">
+      <span className="min-w-0 flex-1">
         <span className={`block text-base font-semibold ${selected ? "text-[#15803d]" : "text-[#101828]"}`}>
           {title}
         </span>
@@ -501,7 +501,7 @@ function EmptyState({
   action: string;
 }) {
   return (
-    <div className="mx-[120px] my-6 flex flex-col items-center gap-3 rounded-xl border border-[#e5e7eb] bg-white py-16 text-center">
+    <div className="mx-4 sm:mx-6 lg:mx-10 xl:mx-[120px] my-6 flex flex-col items-center gap-3 rounded-xl border border-[#e5e7eb] bg-white py-16 text-center">
       <span className="flex h-16 w-16 items-center justify-center rounded-full bg-[#dcfce7]">
         <IconShoppingCart className="h-7 w-7 text-[#16a34a]" />
       </span>

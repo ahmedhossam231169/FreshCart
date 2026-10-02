@@ -38,7 +38,7 @@ export default function WishlistClient({
     <AuthLayout>
       <div className="bg-white">
         {/* Breadcrumb */}
-        <div className="px-[120px] pt-6 text-sm text-[#6a7282]">
+        <div className="px-4 sm:px-6 lg:px-10 xl:px-[120px] pt-6 text-sm text-[#6a7282]">
           <Link href="/" className="hover:text-[#16a34a]">
             Home
           </Link>{" "}
@@ -46,12 +46,12 @@ export default function WishlistClient({
         </div>
 
         {/* Page title */}
-        <div className="flex items-center gap-4 px-[120px] pt-4">
+        <div className="flex items-center gap-4 px-4 sm:px-6 lg:px-10 xl:px-[120px] pt-4">
           <span className="flex h-14 w-14 items-center justify-center rounded-2xl bg-[#fef2f2]">
             <IconHeartFilled className="h-7 w-7 text-[#fb2c36]" />
           </span>
           <div>
-            <h1 className="text-3xl font-bold text-[#1e2939]">My Wishlist</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-[#1e2939]">My Wishlist</h1>
             <p className="text-sm text-[#6a7282]">
               {items.length} items saved
             </p>
@@ -59,8 +59,8 @@ export default function WishlistClient({
         </div>
 
         {/* Wishlist table */}
-        <div className="mx-[120px] my-6 overflow-hidden rounded-xl border border-[#e5e7eb]">
-          <div className="grid grid-cols-[1fr_160px_160px_220px] items-center bg-[#f9fafb] px-6 py-3 text-xs font-medium text-[#6a7282]">
+        <div className="mx-4 sm:mx-6 lg:mx-10 xl:mx-[120px] my-6 overflow-hidden rounded-xl border border-[#e5e7eb]">
+          <div className="hidden grid-cols-[1fr_160px_160px_220px] items-center bg-[#f9fafb] px-6 md:grid py-3 text-xs font-medium text-[#6a7282]">
             <span>Product</span>
             <span className="text-right">Price</span>
             <span className="text-center">Status</span>
@@ -70,15 +70,15 @@ export default function WishlistClient({
           {items.map((item, idx) => (
             <div
               key={item.id}
-              className={`grid grid-cols-[1fr_160px_160px_220px] items-center px-6 py-4 ${
+              className={`grid grid-cols-[1fr_auto] items-center gap-3 px-4 py-4 md:grid-cols-[1fr_160px_160px_220px] md:gap-0 md:px-6 ${
                 idx !== items.length - 1 ? "border-b border-[#e5e7eb]" : ""
               }`}
             >
-              <div className="flex items-center gap-4">
+              <div className="flex min-w-0 items-center gap-3 sm:gap-4">
                 <div className="relative h-16 w-16 shrink-0 overflow-hidden rounded-xl bg-[#f3f4f6]">
                   <Image src={item.imageCover} alt={item.title} fill className="object-contain p-1" />
                 </div>
-                <div>
+                <div className="min-w-0">
                   <h3 className="text-sm font-semibold text-[#1e2939]">{item.title}</h3>
                   <span className="text-xs text-[#6a7282]">{item.category?.name}</span>
                 </div>
@@ -88,13 +88,13 @@ export default function WishlistClient({
                 {item.price} EGP
               </span>
 
-              <div className="flex justify-center">
+              <div className="hidden justify-center md:flex">
                 <span className="rounded-full bg-[#f3f4f6] px-3 py-1 text-xs font-semibold text-[#6a7282]">
                   Not in Cart
                 </span>
               </div>
 
-              <div className="flex items-center justify-center gap-2">
+              <div className="col-span-2 flex items-center justify-end gap-2 md:col-span-1 md:justify-center">
                 <Link
                   href="/cart"
                   className="flex items-center gap-1.5 rounded-lg border border-[#e5e7eb] px-3 py-2 text-xs font-semibold text-[#16a34a]"
@@ -116,7 +116,7 @@ export default function WishlistClient({
           ))}
         </div>
 
-        <div className="px-[120px] pb-10">
+        <div className="px-4 sm:px-6 lg:px-10 xl:px-[120px] pb-10">
           <Link
             href="/products"
             className="flex w-fit items-center gap-2 text-sm font-medium text-[#16a34a]"
@@ -129,8 +129,8 @@ export default function WishlistClient({
 
       {/* Remove item confirm popup */}
       {showRemoveModal && (
-        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50">
-          <div className="w-[420px] rounded-2xl bg-white p-8 text-center">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/50 p-4">
+          <div className="w-full max-w-[420px] rounded-2xl bg-white p-8 text-center">
             <div className="mx-auto flex h-16 w-16 items-center justify-center rounded-full bg-[#fef2f2]">
               <IconTrash className="h-7 w-7 text-[#fb2c36]" />
             </div>

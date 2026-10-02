@@ -12,8 +12,8 @@ export default async function AllProductsPage() {
   return (
     <AuthLayout>
     
-      <div className="bg-gradient-to-r from-[#00c950] to-[#05df72] px-[60px] py-[60px]">
-      <div className="px-[60px] py-4 text-sm text-[#fff]">
+      <div className="bg-gradient-to-r from-[#00c950] to-[#05df72] px-4 sm:px-6 lg:px-[60px] py-8 lg:py-[60px]">
+      <div className="px-4 sm:px-6 lg:px-[60px] py-4 text-sm text-[#fff]">
         <Link href="/" className="hover:text-[#16a34a]">
           Home
         </Link>{" "}
@@ -24,20 +24,20 @@ export default async function AllProductsPage() {
             <IconBox className="h-7 w-7 text-white" />
           </span>
           <div>
-            <h1 className="text-3xl font-bold text-white">All Products</h1>
+            <h1 className="text-2xl sm:text-3xl font-bold text-white">All Products</h1>
             <p className="text-sm text-white/90">Explore our complete product collection</p>
           </div>
         </div>
       </div>
 
       {/* Products count */}
-      <div className="px-[60px] pt-6">
+      <div className="px-4 sm:px-6 lg:px-[60px] pt-6">
         <p className="text-sm text-[#6a7282]">Showing {products.length} products</p>
       </div>
 
     
       {/* Product grid */}
-      <div className="grid grid-cols-5 gap-6 px-[120px] py-6">
+      <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 sm:gap-6 lg:grid-cols-4 xl:grid-cols-5 px-4 sm:px-6 lg:px-10 xl:px-[120px] py-6">
           {products
             .map(
               (product: ProductI) => (
