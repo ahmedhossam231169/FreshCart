@@ -2,7 +2,12 @@ import { getToken } from "next-auth/jwt";
 import { NextRequest, NextResponse } from "next/server";
 
 export async function proxy(req: NextRequest) {
-  const token = await getToken({ req });
+  // On HTTPS (production) NextAuth stores the session in "__Secure-next-auth.session-token"
+  const token = await getToken({
+    req,
+    secret: process.env.NEXTAUTH_SECRET,
+    secureCookie: req.nextUrl.protocol === "https:",
+  });
   const authPages = (pathname: string) => pathname.startsWith("/auth");
 
   if (token && authPages(req.nextUrl.pathname)) {
